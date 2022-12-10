@@ -4,13 +4,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthModule } from './auth/auth.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { SearchComponent } from './search/search.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
-  declarations: [AppComponent, PageNotFoundComponent, SearchComponent],
-  imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule, AuthModule],
+  declarations: [AppComponent],
+  imports: [BrowserModule, ReactiveFormsModule, AppRoutingModule, NgbModule],
   providers: [],
   bootstrap: [AppComponent],
 })
