@@ -1,8 +1,4 @@
-interface IUser {
-  id: number;
-  email: string;
-  password: string;
-}
+import { IUser } from './types/user';
 
 export const users: IUser[] = [
   { id: 1, email: 'admin@mail.ru', password: 'pass' },
