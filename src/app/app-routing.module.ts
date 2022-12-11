@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
@@ -9,6 +11,8 @@ const routes: Routes = [
   },
   {
     path: 'search',
+    canActivate: [AuthGuard],
+    canDeactivate: [AuthGuard],
     loadChildren: () => import('./search/search.module').then((m) => m.SearchModule),
   },
   {
