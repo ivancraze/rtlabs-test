@@ -24,11 +24,12 @@ export class LoginComponent implements OnInit {
         Validators.pattern(/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/),
       ]),
     });
+    this.authService.isAuth() && this.router.navigate(['search']);
   }
 
   onSubmitLogin() {
     this.authService.login(this.loginForm.value).subscribe({
-      next: () => this.router.navigate(['search213']),
+      next: () => this.router.navigate(['search']),
       error: (err) => alert(err.message),
     });
   }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 
-import { users } from '../mock-users';
 import { IUser } from '../types/user';
 
 const userMock: IUser = {
@@ -17,16 +16,16 @@ const userMock: IUser = {
 export class AuthService {
   constructor(private router: Router) {}
 
-  getUsers() {
-    return users;
-  }
-
-  setToken(token: string) {
+  private setToken(token: string) {
     sessionStorage.setItem('token', token);
   }
 
-  getToken() {
+  private getToken() {
     return sessionStorage.getItem('token');
+  }
+
+  deleteToken(key: string) {
+    return sessionStorage.removeItem(key);
   }
 
   isAuth() {
@@ -39,5 +38,9 @@ export class AuthService {
       return of(true);
     }
     return throwError(() => new Error('Invalid credentials'));
+  }
+
+  logout() {
+    this.router.navigate(['login']);
   }
 }
