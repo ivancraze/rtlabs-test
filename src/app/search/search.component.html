@@ -13,12 +13,21 @@
   </nav>
 </header>
 
-<div class="d-flex justify-content-center align-items-center mt-5 ">
-  <form class="col-8">
+<div class="d-flex justify-content-center align-items-center mt-5">
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Введите данные для поиска">
-      <button class="btn btn-outline-dark" type="button" >Button</button>
+      <input type="text" placeholder="Введите данные для поиска"
+             class="form-control"
+             [(ngModel)]="autocompleteResult"
+             [ngbTypeahead]="autocomplete"
+             [editable]="false">
+      <button class="btn btn-outline-dark" type="button" (click)='onSearchButtonClick()'>Найти</button>
     </div>
-  </form>
-  <div class="search-results"></div>
 </div>
+<hr />
+<div *ngIf="searchResultVisible">
+  <div><span class="fs-10">Result: </span></div>
+  <div>{{ searchResult }}</div>
+</div>
+
+
+
