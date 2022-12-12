@@ -40,7 +40,11 @@ export class AuthService {
     return throwError(() => new Error('Invalid credentials'));
   }
 
-  logout() {
-    this.router.navigate(['login']);
+  logout(): void {
+    if (confirm('Are you sure?')) {
+      this.deleteToken('token');
+      this.router.navigate(['login']);
+    }
+    return;
   }
 }
