@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 
-import { IUser } from '../types/user';
+import { IUser } from '../models/user';
 
 const userMock: IUser = {
   id: 1,

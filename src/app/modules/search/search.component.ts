@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { debounceTime, distinctUntilChanged, map, Observable, OperatorFunction } from 'rxjs';
 
 const peoples: string[] = ['Иван', 'Алексей', 'Айрат', 'Сергей', 'Андрей', 'Айрат2', 'Андрей2'];
@@ -10,7 +9,7 @@ const peoples: string[] = ['Иван', 'Алексей', 'Айрат', 'Серг
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   public autocompleteResult: string[] = [];
   public searchResult: string[] = [];
@@ -30,10 +29,6 @@ export class SearchComponent implements OnInit {
     if (this.autocompleteResult && this.autocompleteResult.length) {
       this.searchResult = this.autocompleteResult;
     }
-  }
-
-  onLogoutClick() {
-    this.authService.logout();
   }
 
   ngOnInit(): void {

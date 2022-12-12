@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './guards/auth.guard';
+import { EntryPageComponent } from './pages/entry-page/entry-page.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
+import { SearchPageComponent } from './pages/search-page/search-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'login',
-    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    component: EntryPageComponent,
   },
   {
     path: 'search',
-    canActivate: [AuthGuard],
-    canDeactivate: [AuthGuard],
-    loadChildren: () => import('./search/search.module').then((m) => m.SearchModule),
+    component: SearchPageComponent,
   },
   {
     path: '**',
-    loadChildren: () => import('./page-not-found/page-not-found.module').then((m) => m.PageNotFoundModule),
+    component: NotFoundPageComponent,
   },
 ];
 
